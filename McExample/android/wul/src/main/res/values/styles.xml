@@ -1,0 +1,69 @@
+<resources>
+
+	<!-- Base application theme. -->
+	<style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+		<!-- Customize your theme here. -->
+		<item name="colorPrimary">@color/colorPrimary</item>
+		<item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+		<item name="colorAccent">@color/colorAccent</item>
+		<item name="actionOverflowButtonStyle">@style/MenuOverflow</item>
+		<item name="windowActionBar">false</item>
+		<item name="windowNoTitle">true</item>
+		<item name="colorControlNormal">@color/white</item>
+	</style>
+
+	<style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+
+	<style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+
+	<style name="MenuOverflow" parent="Widget.AppCompat.ActionButton.Overflow">
+		<item name="android:tint">#FFFFFFFF</item>
+		<item name="android:src">@drawable/ic_navigation_more_vert</item>
+	</style>
+
+	<style name="TextView">
+		<item name="android:textSize">16sp</item>
+		<item name="android:typeface">sans</item>
+		<item name="android:textColor">@color/bluegrey_400</item>
+	</style>
+
+	<style name="EditText" parent="TextView">
+		<item name="android:background">@drawable/shape_panel</item>
+	</style>
+
+	<style name="Button" parent="Widget.AppCompat.Button.Colored">
+		<item name="android:background">@color/cyan_a400</item>
+		<item name="android:textColor">@color/white</item>
+		<item name="android:textSize">16sp</item>
+		<item name="android:padding">10dp</item>
+	</style>
+
+	<style name="Checkbox" parent="TextView">
+	</style>
+
+	<style name="Pin" parent="EditText">
+		<item name="android:layout_width">40dp</item>
+		<item name="android:layout_height">wrap_content</item>
+		<item name="android:textSize">26sp</item>
+		<item name="android:textStyle">bold</item>
+		<item name="android:maxLength">1</item>
+		<item name="android:gravity">center</item>
+		<item name="android:layout_margin">5dp</item>
+		<item name="android:inputType">numberPassword</item>
+		<item name="android:focusable">true</item>
+		<item name="android:focusableInTouchMode">true</item>
+	</style>
+
+	<style name="DividerVertical">
+		<item name="android:layout_width">1dp</item>
+		<item name="android:layout_height">match_parent</item>
+		<item name="android:background">@color/bluegrey_100</item>
+	</style>
+
+	<style name="DividerHorizontal">
+		<item name="android:layout_width">match_parent</item>
+		<item name="android:layout_height">1dp</item>
+		<item name="android:background">@color/bluegrey_100</item>
+	</style>
+
+</resources>

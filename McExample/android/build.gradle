@@ -9,6 +9,7 @@ buildscript {
         targetSdkVersion = 29
     }
     repositories {
+
         google()
         jcenter()
     }
@@ -22,6 +23,12 @@ buildscript {
 
 allprojects {
     repositories {
+
+        flatDir(name: 'prebuilt-sdk', dirs: "${rootProject.projectDir}/wul/prebuilt-sdk")
+        flatDir(name: 'prebuilt-crypto', dirs: "${rootProject.projectDir}/wul/prebuilt-crypto")
+        flatDir(name: 'prebuilt-wul', dirs: "${rootProject.projectDir}/wul/prebuilt-wul")
+
+
         mavenLocal()
         maven {
             // All of React Native (JS, Obj-C sources, Android binaries) is installed from npm

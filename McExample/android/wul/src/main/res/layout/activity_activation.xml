@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/coordinatorLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout android:id="@+id/activity_main"
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:orientation="vertical">
+
+        <include layout="@layout/toolbar"/>
+
+        <ScrollView android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+            <FrameLayout android:layout_width="match_parent"
+                         android:layout_height="wrap_content">
+
+                <LinearLayout android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:layout_gravity="center_horizontal"
+                              android:orientation="vertical"
+                              android:paddingTop="64dp">
+
+                    <TextView android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:layout_gravity="end|center_vertical"
+                              android:layout_marginBottom="4dp"
+                              android:drawableLeft="@drawable/ic_account_balance_wallet"
+                              android:drawablePadding="8dp"
+                              android:gravity="end|center_vertical"
+                              android:text="@string/app_title"
+                              android:textColor="@color/cyan_800"
+                              android:textSize="22sp"
+                              android:textStyle="bold|italic"/>
+
+                    <TextView android:id="@+id/version"
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:layout_gravity="end|center_vertical"
+                              android:layout_marginBottom="20dp"
+                              android:gravity="end|center_vertical"
+                              android:textColor="@color/text_light"
+                              android:textSize="14sp"
+                              android:typeface="sans"/>
+
+                    <TextView style="@style/TextView"
+                              android:layout_width="match_parent"
+                              android:layout_height="wrap_content"
+                              android:layout_marginBottom="8dp"
+                              android:text="@string/user_id"/>
+
+                    <EditText android:id="@+id/user_id" style="@style/EditText"
+                              android:layout_width="250dp"
+                              android:layout_height="wrap_content"
+                              android:layout_marginBottom="16dp"
+                              android:inputType="textCapWords"
+                              android:text=""/>
+
+                    <LinearLayout android:layout_width="match_parent"
+                                  android:layout_height="wrap_content"
+                                  android:layout_marginBottom="16dp"
+                                  android:orientation="horizontal">
+
+                        <TextView style="@style/TextView"
+                                  android:layout_width="0dp"
+                                  android:layout_height="match_parent"
+                                  android:layout_marginBottom="8dp"
+                                  android:layout_weight="1"
+                                  android:gravity="start|center_vertical"
+                                  android:text="@string/activation_code"/>
+
+                        <EditText android:id="@+id/activation_code"
+                                  style="@style/EditText"
+                                  android:layout_width="40dp"
+                                  android:layout_height="wrap_content"
+                                  android:inputType="number"/>
+                    </LinearLayout>
+
+                    <LinearLayout android:id="@+id/activation_pin_layout"
+                                  android:layout_width="match_parent"
+                                  android:layout_height="wrap_content"
+                                  android:layout_marginBottom="16dp"
+                                  android:orientation="horizontal"
+                                  android:visibility="gone">
+
+                        <TextView style="@style/TextView"
+                                  android:layout_width="0dp"
+                                  android:layout_height="match_parent"
+                                  android:layout_marginBottom="8dp"
+                                  android:layout_weight="1"
+                                  android:gravity="start|center_vertical"
+                                  android:text="@string/pin_optional"/>
+
+                        <EditText android:id="@+id/activation_pin" style="@style/EditText"
+                                  android:layout_width="70dp"
+                                  android:layout_height="wrap_content"
+                                  android:gravity="center"
+                                  android:inputType="numberPassword"
+                                  android:maxLength="4"
+                                  android:maxLines="1"/>
+                    </LinearLayout>
+
+                    <androidx.appcompat.widget.AppCompatCheckBox
+                        android:id="@+id/activation_pas_checkbox" style="@style/Checkbox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:buttonTint="@color/bluegrey_400"
+                        android:paddingLeft="0dp"
+                        android:text="@string/edit_urls"
+                        android:textColor="@color/bluegrey_400"
+                        tools:ignore="UnusedAttribute"/>
+
+                    <LinearLayout android:id="@+id/activation_urls_layout"
+                                  android:layout_width="match_parent"
+                                  android:layout_height="wrap_content"
+                                  android:layout_marginBottom="8dp"
+                                  android:orientation="vertical"
+                                  android:visibility="gone">
+
+                        <TextView style="@style/TextView"
+                                  android:layout_width="match_parent"
+                                  android:layout_height="wrap_content"
+                                  android:layout_marginBottom="8dp"
+                                  android:text="@string/pas_url"/>
+
+                        <EditText android:id="@+id/activation_pas_url"
+                                  style="@style/EditText"
+                                  android:layout_width="match_parent"
+                                  android:layout_height="wrap_content"
+                                  android:layout_marginBottom="8dp"
+                                  android:hint="@string/pas_url_hint"
+                                  android:inputType="textUri"
+                                  android:maxLines="1"/>
+
+                    </LinearLayout>
+
+                    <Button android:id="@+id/activation_button"
+                            style="@style/Button"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/activate_button"/>
+
+                </LinearLayout>
+            </FrameLayout>
+
+        </ScrollView>
+
+    </LinearLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:cardBackgroundColor="@color/bluegrey_100"
+    app:cardCornerRadius="15dp"
+    app:cardUseCompatPadding="true"
+    app:cardPreventCornerOverlap="false">
+
+    <ImageView
+        android:id="@+id/cardholder_background"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="10dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/cardfront_5"
+        />
+
+    <ImageView
+        android:id="@+id/cardholder_overflow"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_gravity="bottom|end"
+        android:src="@drawable/ic_more_vert"
+        android:paddingRight="18dp"
+        android:paddingBottom="20dp"
+        android:visibility="visible"
+        />
+
+    <ImageView
+        android:layout_width="90dp"
+        android:layout_height="74dp"
+        android:paddingLeft="16dp"
+        android:paddingBottom="20dp"
+        android:layout_gravity="start|bottom"
+        android:src="@drawable/mastercard_logo_trans"
+        android:visibility="gone"
+        />
+
+    <TextView
+        android:id="@+id/cardholder_pan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start|bottom"
+        android:paddingLeft="15dp"
+        android:paddingBottom="20dp"
+        android:text="*** 4550"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:typeface="monospace"
+        />
+
+    <View
+        android:id="@+id/cardholder_mask"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/mask"
+        android:visibility="invisible"
+        />
+
+</androidx.cardview.widget.CardView>

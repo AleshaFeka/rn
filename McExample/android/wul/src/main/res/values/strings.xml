@@ -1,0 +1,92 @@
+<resources>
+	<string name="app_name">AnyWallet WUL</string>
+	<string name="app_title">AnyWallet</string>
+	<string name="service_description">Sample MPA WUL payments</string>
+	<string name="aid_description">Sample MPA WUL</string>
+
+	<string name="please_wait">Please wait&#8230;</string>
+	<string name="loading">Loading&#8230;</string>
+	<string name="edit_urls">Edit PAS URL</string>
+	<string name="user_id">User Id</string>
+	<string name="activation_code">Activation code</string>
+	<string name="pin_optional">PIN (optional)</string>
+	<string name="pas_url">Payment App Server URL</string>
+	<string name="pas_url_hint">Payment Server URL</string>
+	<string name="issuer_ip_port">Issuer IP : Port</string>
+	<string name="issuer_ip_port_hint">Issuer Server URL</string>
+	<string name="activate_button">ACTIVATE</string>
+	<string name="version">WUL v%s</string>
+
+	<string name="add_card_title">Add Card</string>
+	<string name="add_card_button">ADD CARD</string>
+	<string name="card_number">Card number</string>
+	<string name="dummy_pan">5413339000001513</string>
+	<string name="expiry_date">Expiry date</string>
+	<string name="expiry_month">01</string>
+	<string name="expiry_divider">/</string>
+	<string name="expiry_year">21</string>
+	<string name="cardholder_name">Cardholder name</string>
+	<string name="dummy_name">Mr A N Other</string>
+	<string name="cvc">CVC</string>
+	<string name="dummy_cvc">123</string>
+
+	<string name="menu_set_pin">Set PIN</string>
+	<string name="menu_set_or_change_pin">Set/Change PIN</string>
+	<string name="menu_change_pin">Change PIN</string>
+
+	<string name="suspend">Suspend</string>
+	<string name="unsuspend">Un-suspend</string>
+	<string name="acticate">Activate</string>
+	<string name="default_card">Default card</string>
+	<string name="selected_card">Selected card</string>
+	<string name="card_suspended">Card suspended</string>
+	<string name="card_not_activate">Card not activated</string>
+	<string name="digitization_in_progress">Digitization in progress</string>
+	<string name="tokens">%d tokens</string>
+	<string name="token">%d token</string>
+	<string name="pay_now_button">Pay by NFC</string>
+	<string name="no_transactions">No transactions</string>
+	<string name="pan">*** %s</string>
+
+	<string name="about_flavor">Flavor: %s</string>
+	<string name="about_auth_mode">Auth Mode: %s</string>
+	<string name="about_cdcvm">CD CVM: %s</string>
+	<string name="about_validation">Validation: %s</string>
+	<string name="about_instance_id">Instance id: %s</string>
+	<string name="about_main_text">Copyright &#169; 2019, Mastercard International Incorporated and/or
+        its affiliates. All rights reserved.\nThe contents of this file may only be used subject to the MasterCard Mobile Payment SDK for MCBP and/or MasterCard Mobile MPP UI SDK Materials License.\n\nPlease refer to the file LICENSE.TXT for full details.\n\n\nTO THE EXTENT PERMITTED BY LAW, THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON INFRINGEMENT. TO THE EXTENT PERMITTED BY LAW, IN NO EVENT SHALL MASTERCARD OR ITS AFFILIATES BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n\nFor additional information please contact:</string>
+	<string name="about_email">mpsdk@mastercard.com</string>
+    <string name="pay_qrc_button">Pay by QR</string>
+	<string name="credentials_not_available">No payment tokens left. You can not make transaction.</string>
+	<string name="contactless_transaction_abort_message">Contactless Payment Aborted, AbortReason:</string>
+    <string name="contactless_not_supported">The selected card does not support contactless payments</string>
+	<string name="qrc_not_supported">The selected card does not support QR payments</string>
+    <string name="network_error_message">please check the device is connected to the internet and relaunch the application</string>
+	<string name="fingerprint_error">Fingerprint error, this device does not support fingerprint authentication</string>
+    <string name="another_card_being_degitized">A card is already being digitized. Please wait.</string>
+	<string name="card_pin_has_never_changed">This card\'s PIN has never been changed</string>
+	<string name="pin_changed_success">PIN changed successfully</string>
+	<string name="pin_never_changed">This PIN has never been changed</string>
+	<string name="pin_set_success">PIN set successfully</string>
+	<string name="qrc_generate_error">Cannot generate QR Code. Invalid input or invalid profile</string>
+	<string name="error_user_id_missing">Please enter a user id and the activation code</string>
+	<string name="error_pas_url">Please enter a valid payment server url</string>
+	<string name="transaction_declined_did_you_set_wallet_pin">Declined. Did you set the wallet PIN?</string>
+	<string name="transaction_declined_by_issuer">Declined by issuer.</string>
+	<string name="contactless_payment_unsuccessful">Contactless payment was unsuccessful</string>
+    <string name="card_deleted">Card Deleted</string>
+	<string name="replenish_success">Replenish Success</string>
+	<string name="re_provision_started">An update to your existing card with card ID = %1$S is
+		started, block all operations for this card Id until card is updated</string>
+	<string name="notification_re_provision_card_profile_message">You have received an update to
+		your existing card
+	</string>
+    <string name="shared_pref_fcm_token_key">fcm_token</string>
+	<string name="fcm_token_null_or_empty">FCM token is NULL or Empty</string>
+    <string name="unable_to_fetch_fcm_token">Unable to fetch FCM token</string>
+    <string name="notification_channel_id">general_notification</string>
+	<string name="notification_channel_description">General notifications</string>
+    <string name="pin_reset">PIN reset request from CMS_D</string>
+	<string name="card_pin_reset_description">Card PIN reset received for Card ID:</string>
+	<string name="wallet_pin_reset_description">Wallet PIN reset received</string>
+</resources>

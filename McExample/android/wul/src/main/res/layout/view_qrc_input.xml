@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2019, MasterCard International Incorporated and/or its affiliates. All rights reserved.
+  ~
+  ~ The contents of this file may only be used subject to the MasterCard Mobile Payment SDK for MCBP and/or MasterCard Mobile MPP UI SDK Materials License.
+  ~
+  ~ Please refer to the file LICENSE.TXT for full details.
+  ~
+  ~ TO THE EXTENT PERMITTED BY LAW, THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON INFRINGEMENT. TO THE EXTENT PERMITTED BY LAW, IN NO EVENT SHALL MASTERCARD OR ITS AFFILIATES BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+  -->
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fadeScrollbars="false">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|center_vertical"
+            android:text="Currency"
+            android:textColor="@color/cyan_800"
+            android:textSize="22sp"
+            android:textStyle="bold|italic"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|center_vertical"
+            android:layout_marginLeft="2dp"
+            android:text="(optional)"
+            android:textColor="@color/cyan_800"
+            android:textSize="16sp"
+            android:textStyle="italic"/>
+
+        <Spinner
+            android:layout_marginRight="@dimen/activity_top_margin"
+            android:id="@+id/spinner_currency"
+            android:layout_gravity="center|center_vertical"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|center_vertical"
+                android:text="Amount"
+                android:textColor="@color/cyan_800"
+                android:textSize="22sp"
+                android:textStyle="bold|italic"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|center_vertical"
+                android:text="(optional)"
+                android:layout_marginLeft="2dp"
+                android:textColor="@color/cyan_800"
+                android:textSize="16sp"
+                android:textStyle="italic"/>
+
+
+            <EditText
+                android:id="@+id/qrcAmount"
+                android:layout_marginRight="@dimen/activity_top_margin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:textColor="@color/cyan_800"
+                android:layout_gravity="center_vertical"
+                android:digits="0123456789."
+                android:inputType="numberDecimal"
+                android:textSize="18sp"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>

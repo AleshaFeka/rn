@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+	  xmlns:app="http://schemas.android.com/apk/res-auto"
+	>
+	<item
+		android:id="@+id/main_menu_set_or_change_wallet_pin"
+		android:orderInCategory="100"
+		android:title="Set/Change wallet PIN"
+		app:showAsAction="never"
+		/>
+	<item
+		android:id="@+id/main_menu_request_pin_status"
+		android:orderInCategory="200"
+		android:title="Request PIN status"
+		app:showAsAction="never"
+		/>
+	<item
+		android:id="@+id/main_menu_reset"
+		android:orderInCategory="300"
+		android:title="Reset application"
+		app:showAsAction="never"
+		/>
+	<item
+		android:id="@+id/main_menu_refresh_cards"
+		android:orderInCategory="400"
+		android:title="Refresh cards"
+		app:showAsAction="never"
+		/>
+	<item
+		android:id="@+id/main_menu_about"
+		android:orderInCategory="500"
+		android:title="About"
+		app:showAsAction="never"
+	/>
+</menu>

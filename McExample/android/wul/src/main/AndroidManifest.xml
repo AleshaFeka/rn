@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ * Copyright (c) 2019, MasterCard International Incorporated and/or its
+  ~ * affiliates. All rights reserved.
+  ~ *
+  ~ * The contents of this file may only be used subject to the MasterCard
+  ~ * Mobile Payment SDK for MCBP and/or MasterCard Mobile MPP UI SDK
+  ~ * Materials License.
+  ~ *
+  ~ * Please refer to the file LICENSE.TXT for full details.
+  ~ *
+  ~ * TO THE EXTENT PERMITTED BY LAW, THE SOFTWARE IS PROVIDED "AS IS", WITHOUT
+  ~ * WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+  ~ * WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+  ~ * NON INFRINGEMENT. TO THE EXTENT PERMITTED BY LAW, IN NO EVENT SHALL
+  ~ * MASTERCARD OR ITS AFFILIATES BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  ~ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  ~ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  ~ * IN THE SOFTWARE.
+  -->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:tools="http://schemas.android.com/tools"
+          package="com.mastercard.mpsdksample.mpausingwul">
+
+    <!-- Permission to write in sdCard for log purposes only -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+
+    <application
+        android:allowBackup="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        tools:replace="android:allowBackup"
+        android:screenOrientation = "portrait">
+
+        <!-- activities -->
+        <activity
+            android:name=".activity.SplashActivity"
+            android:alwaysRetainTaskState="false"
+            android:clearTaskOnLaunch="true"
+            android:launchMode="singleTop"
+            >
+<!--
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+-->
+            <intent-filter>
+                <data android:scheme="payment"/>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activity.ActivationActivity"
+            android:alwaysRetainTaskState="false"
+            android:clearTaskOnLaunch="true"
+            android:launchMode="singleTop"
+            />
+        <activity
+            android:name=".activity.WalletActivity"
+            android:alwaysRetainTaskState="false"
+            android:clearTaskOnLaunch="true"
+            android:launchMode="singleTop"
+            />
+        <activity
+            android:name=".activity.AddCardActivity"
+            android:launchMode="singleTop"/>
+        <activity
+            android:name=".activity.PinActivity"
+            android:launchMode="singleTop"/>
+        <activity android:name=".activity.CardActivity"
+            android:launchMode="singleTop"/>
+        <activity
+            android:name=".activity.FingerprintActivity"
+            android:launchMode="singleInstance"/>
+        <activity
+            android:name=".activity.QrcActivity"
+            android:launchMode="singleTop"/>
+        <activity
+            android:name=".activity.TransactionActivity"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTop">
+            <intent-filter>
+                <data android:scheme="anywallet"/>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="LocalWalletTransactionEventReceiver"/>
+            </intent-filter>
+        </activity>
+
+        <!-- HCE service -->
+        <service
+            android:name=".service.WalletHceService"
+            android:exported="true"
+            android:permission="android.permission.BIND_NFC_SERVICE">
+            <intent-filter>
+                <action android:name="android.nfc.cardemulation.action.HOST_APDU_SERVICE"/>
+            </intent-filter>
+            <meta-data
+                android:name="android.nfc.cardemulation.host_apdu_service"
+                android:resource="@xml/wul_apdu_service"/>
+        </service>
+
+    </application>
+
+</manifest>

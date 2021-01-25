@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<color name="colorPrimary">@color/cyan_600</color>
+	<color name="colorPrimaryDark">@color/cyan_700</color>
+	<color name="colorAccent">@color/cyan_a400</color>
+
+	<!-- brand colours -->
+	<color name="mastercard_red">#FFEB001B</color>
+	<color name="mastercard_orange">#FFFF5F00</color>
+	<color name="mastercard_yellow">#FFF79E1B</color>
+
+	<color name="black">#FF000000</color>
+	<color name="white">#FFFFFFFF</color>
+	<color name="near_black">#FF222222</color>
+	<color name="red">#FFFF0000</color>
+	<color name="green">#FF00AA00</color>
+	<color name="blue">#FF0000FF</color>
+	<color name="orange">#FFFFAA00</color>
+	<color name="light_grey">#FFEEEEEE</color>
+
+	<color name="text_light">#44000000</color>
+	<color name="text_dark">#99000000</color>
+
+	<color name="mask">#88000000</color>
+
+	<color name="bluegrey_50">#FFECEFF1</color>
+	<color name="bluegrey_100">#FFCFD8DC</color>
+	<color name="bluegrey_200">#FFB0BEC5</color>
+	<color name="bluegrey_300">#FF90A4AE</color>
+	<color name="bluegrey_400">#FF78909C</color>
+	<color name="bluegrey_500">#FF607D8B</color>
+	<color name="bluegrey_600">#FF546E7A</color>
+	<color name="bluegrey_700">#FF455A64</color>
+	<color name="bluegrey_800">#FF37474F</color>
+	<color name="bluegrey_900">#FF263238</color>
+
+	<color name="cyan_50">#FFE0F7FA</color>
+	<color name="cyan_100">#FFB2EBF2</color>
+	<color name="cyan_200">#FF80DEEA</color>
+	<color name="cyan_300">#FF4DD0E1</color>
+	<color name="cyan_400">#FF26C6DA</color>
+	<color name="cyan_500">#FF00BCD4</color>
+	<color name="cyan_600">#FF00ACC1</color>
+	<color name="cyan_700">#FF0097A7</color>
+	<color name="cyan_800">#FF00838F</color>
+	<color name="cyan_900">#FF006064</color>
+	<color name="cyan_a100">#FF84FFFF</color>
+	<color name="cyan_a200">#FF18FFFF</color>
+	<color name="cyan_a300">#FF00E5FF</color>
+	<color name="cyan_a400">#FF00B8D4</color>
+
+</resources>

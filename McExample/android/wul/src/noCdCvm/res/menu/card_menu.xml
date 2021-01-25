@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+	<item
+		android:id="@+id/card_menu_add_or_change_card_pin"
+		android:orderInCategory="100"
+		android:title="Add/Change PIN"
+		android:visible="false"
+	/>
+
+	<item
+		android:id="@+id/card_menu_set_as_default"
+		android:orderInCategory="110"
+		android:title="Set as default"
+		/>
+
+	<item
+		android:id="@+id/card_menu_activate_or_suspend_or_unsuspend"
+		android:orderInCategory="150"
+		android:title="Activate/Suspend"
+	/>
+
+	<item
+		android:id="@+id/card_menu_request_pin_status"
+		android:orderInCategory="200"
+		android:title="Request PIN status"
+		android:visible="false"
+	/>
+
+	<item
+		android:id="@+id/card_menu_replenish"
+		android:orderInCategory="250"
+		android:title="Replenish"
+		/>
+
+	<item
+		android:id="@+id/card_menu_delete"
+		android:orderInCategory="300"
+		android:title="Delete"
+		/>
+
+</menu>

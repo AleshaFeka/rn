@@ -1,0 +1,208 @@
+/*
+ * Copyright (c) 2019, MasterCard International Incorporated and/or its
+ * affiliates. All rights reserved.
+ *
+ * The contents of this file may only be used subject to the MasterCard
+ * Mobile Payment SDK for MCBP and/or MasterCard Mobile MPP UI SDK
+ * Materials License.
+ *
+ * Please refer to the file LICENSE.TXT for full details.
+ *
+ * TO THE EXTENT PERMITTED BY LAW, THE SOFTWARE IS PROVIDED "AS IS", WITHOUT
+ * WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+ * WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NON INFRINGEMENT. TO THE EXTENT PERMITTED BY LAW, IN NO EVENT SHALL
+ * MASTERCARD OR ITS AFFILIATES BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+ * IN THE SOFTWARE.
+ */
+
+task copyApk(type: Sync) {
+    def fromPath = rootProject.projectDir.toString() + '/app/build/outputs/apk'
+    def intoPath = rootProject.projectDir.toString() + '/sample-output'
+    println 'APK to copy: ' + fromPath + " -> " + intoPath
+    from fromPath
+    into intoPath
+    include '**/*.apk'
+}
+
+apply plugin: 'com.android.library'
+//apply plugin: 'com.android.application'
+//apply plugin: 'dexguard'
+apply plugin: 'jacoco' // Apply the jacoco plugin to generate test coverage reports.
+
+def cryptoVersion = '3.2.3'
+def sdkVersion = '3.2.3'
+def wulVersion = '3.2.3'
+
+android {
+
+    compileSdkVersion 28
+
+    defaultConfig {
+        minSdkVersion 19
+        targetSdkVersion 26
+        versionCode 1
+        versionName "${wulVersion}"
+        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
+
+        // Default URL of the CES Payment App Server
+        buildConfigField "String", "PAS_URL", "\"http://192.168.0.4:7092/pas\""
+
+        // Build
+        buildConfigField "long", "TIMESTAMP", System.currentTimeMillis() + "L"
+        buildConfigField "String", "APP_VERSION", "\"" + wulVersion + "\""
+
+        // Static key shared with sample Crypto component to manage the custom encrypted data
+        buildConfigField "byte[]", "SHARED_CRYPTO_KEY", "{(byte) 0xA1, (byte) 0x1F, (byte) 0xAB, " +
+                "(byte) 0x40, (byte) 0x11, (byte) 0x47, (byte) 0xC7, (byte) 0xA4, (byte) 0x71, " +
+                "(byte) 0xAF, (byte) 0x73, (byte) 0xDC, (byte) 0xE8, (byte) 0xC8, (byte) 0x9F, " +
+                "(byte) 0x88}"
+    }
+
+    signingConfigs {
+        release {
+            storeFile file(rootProject.projectDir.toString()+'/keystore/mastercard_sdk.keystore')
+            storePassword "3%bbP6PH"
+            keyAlias "pkcs15_android"
+            keyPassword "3%bbP6PH"
+        }
+        debug {
+
+        }
+    }
+
+    lintOptions{
+        abortOnError false
+    }
+
+    buildTypes {
+        debug {
+            debuggable true
+            testCoverageEnabled = true
+        }
+/*
+        release {
+            proguardFile getDefaultDexGuardFile('dexguard-release-aggressive.pro')
+            proguardFile 'dexguard-project.txt'
+            signingConfig signingConfigs.release
+        }
+*/
+    }
+
+    flavorDimensions "wul"
+
+    productFlavors {
+/*
+        walletPin {
+            dimension "wul"
+            versionNameSuffix ' WalletPin'
+        }
+*/
+        cardPin {
+            dimension "wul"
+            versionNameSuffix ' CardPin'
+        }
+/*
+        fingerprint {
+            dimension "wul"
+            versionNameSuffix ' Fingerprint'
+        }
+        noCdCvm {
+            dimension "wul"
+            versionNameSuffix ' NoCdCvm'
+        }
+*/
+    }
+
+    def deployName = 'Sample_MPA_WUL_' + wulVersion
+/*
+    android.libraryVariants.all { variant ->
+        variant.outputs.all { output ->
+            outputFileName = deployName + '-' + variant.name + '.apk'
+            println 'MPA WUL variant: ' + outputFileName
+        }
+    }
+*/
+}
+
+assemble.finalizedBy(copyApk)
+
+def supportVersion = '26.1.0'
+
+dependencies {
+    androidTestImplementation('androidx.test.espresso:espresso-core:3.1.0', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    testImplementation 'junit:junit:4.12'
+
+    implementation 'com.google.zxing:core:3.3.1'
+
+    implementation 'androidx.appcompat:appcompat:1.0.0'
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'com.google.android.material:material:1.0.0'
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'
+    implementation 'androidx.appcompat:appcompat:1.0.0'
+    implementation 'com.google.android.material:material:1.0.0'
+
+    implementation 'net.sf.flexjson:flexjson:3.3'
+
+    implementation "com.google.firebase:firebase-messaging:18.0.0"
+
+    api('commons-validator:commons-validator:1.4.1'){
+        exclude group: 'commons-logging'
+        exclude group: 'commons-collections'
+        exclude group: 'commons-digester'
+        exclude group: 'commons-beanutils'
+    }
+
+    debugImplementation (name: "mpsdk-walletusabilitylayer-${wulVersion}-debug", ext: "aar")
+    releaseImplementation (name: "mpsdk-walletusabilitylayer-${wulVersion}-release", ext: "aar")
+
+    debugImplementation (name: "mpsdk-${sdkVersion}-debug", ext: "aar")
+    releaseImplementation (name: "mpsdk-${sdkVersion}-release", ext: "aar")
+
+    debugImplementation (name: "ces-pas-communication-plugin-${wulVersion}-debug", ext: "aar")
+    releaseImplementation (name: "ces-pas-communication-plugin-${wulVersion}-release", ext: "aar")
+
+    debugImplementation (name: "sample-android-crypto-${cryptoVersion}-debug", ext: "aar")
+    releaseImplementation (name: "sample-android-crypto-${cryptoVersion}-release", ext: "aar")
+}
+
+//apply plugin: 'com.google.gms.google-services'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,41 @@
+<!--
+  ~ Copyright (c) 2019, MasterCard International Incorporated and/or its
+  ~ affiliates. All rights reserved.
+  ~
+  ~ The contents of this file may only be used subject to the MasterCard
+  ~ Mobile Payment SDK for MCBP and/or MasterCard Mobile MPP UI SDK
+  ~ Materials License.
+  ~
+  ~ Please refer to the file LICENSE.TXT for full details.
+  ~
+  ~ TO THE EXTENT PERMITTED BY LAW, THE SOFTWARE IS PROVIDED "AS IS", WITHOUT
+  ~ WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+  ~ WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+  ~ NON INFRINGEMENT. TO THE EXTENT PERMITTED BY LAW, IN NO EVENT SHALL
+  ~ MASTERCARD OR ITS AFFILIATES BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  ~ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  ~ FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  ~ IN THE SOFTWARE.
+  -->
+
+<host-apdu-service xmlns:android="http://schemas.android.com/apk/res/android"
+				   android:apduServiceBanner="@drawable/mastercard_logo"
+				   android:description="@string/service_description"
+				   android:requireDeviceUnlock="false" >
+
+	<aid-group
+		android:category="payment"
+		android:description="@string/aid_description">
+		<!-- Following is a PPSE AID. You must always include this AID in order for payments to
+           work-->
+		<aid-filter android:name="325041592E5359532E4444463031" />
+		<!-- Following AID list is specific to the application requirements.
+           If your application supports the type of card that these AID represents,
+           you must include those AID in your configuration file -->
+		<aid-filter android:name="A0000000041010"/> <!-- Mastercard DEBIT/CREDIT -->
+		<aid-filter android:name="A0000000042203"/> <!-- Mastercard US DEBIT/CREDIT -->
+		<aid-filter android:name="A0000000043060"/> <!-- Maestro DEBIT -->
+		<aid-filter android:name="A0000000049100"/> <!-- Private label AID-->
+	</aid-group>
+
+</host-apdu-service>

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/coordinatorLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout android:id="@+id/activity_main"
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:orientation="vertical">
+
+        <include layout="@layout/toolbar"/>
+
+        <FrameLayout
+            android:id="@+id/pin_main_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="@dimen/activity_vertical_margin"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/activity_vertical_margin">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/pin_charge_message_1"
+                    style="@style/TextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="8dp"
+                    android:textSize="20sp"/>
+
+                <TextView
+                    android:id="@+id/pin_charge_message_2"
+                    style="@style/TextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="32dp"
+                    android:textSize="28sp"
+                    android:visibility="invisible"/>
+
+                <TextView
+                    android:id="@+id/pin_label"
+                    style="@style/TextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="8dp"
+                    android:text="Enter PIN"/>
+
+                <LinearLayout
+                    android:id="@+id/pin_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="16dp"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/pin_1"
+                        style="@style/Pin"
+                        android:nextFocusDown="@+id/pin_2"
+                        android:nextFocusRight="@+id/pin_2">
+                        <requestFocus/>
+                    </EditText>
+
+                    <EditText
+                        android:id="@+id/pin_2"
+                        style="@style/Pin"
+                        android:enabled="false"
+                        android:nextFocusDown="@+id/pin_3"
+                        android:nextFocusLeft="@+id/pin_1"
+                        android:nextFocusRight="@+id/pin_3"
+                        android:nextFocusUp="@+id/pin_1"/>
+
+                    <EditText
+                        android:id="@+id/pin_3"
+                        style="@style/Pin"
+                        android:enabled="false"
+                        android:nextFocusDown="@+id/pin_4"
+                        android:nextFocusLeft="@+id/pin_2"
+                        android:nextFocusRight="@+id/pin_4"
+                        android:nextFocusUp="@+id/pin_2"/>
+
+
+                    <EditText
+                        android:id="@+id/pin_4"
+                        style="@style/Pin"
+                        android:enabled="false"
+                        android:nextFocusLeft="@+id/pin_3"
+                        android:nextFocusUp="@+id/pin_3"/>
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/pin_message"
+                    style="@style/TextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:gravity="center"
+                    android:text=""
+                    android:textColor="@color/red"
+                    android:textSize="18sp"
+                    android:visibility="invisible"/>
+
+                <TextView
+                    android:id="@+id/pin_aot_counter"
+                    style="@style/TextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:padding="16dp"
+                    android:textColor="@color/red"
+                    android:textSize="20sp"
+                    android:visibility="invisible"/>
+            </LinearLayout>
+        </FrameLayout>
+    </LinearLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

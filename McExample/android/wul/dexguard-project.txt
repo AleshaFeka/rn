@@ -1,0 +1,43 @@
+# Add project specific ProGuard rules here.
+
+-assumenosideeffects class android.util.Log {
+    public static boolean isLoggable(java.lang.String, int);
+    public static int v(...);
+    public static int i(...);
+    public static int w(...);
+    public static int d(...);
+    public static int e(...);
+}
+
+# for native crypto: use below rule if you are using native crypto
+-keepresourcefiles lib/**/*.so
+
+# for sample mpa wul specific
+-keepresources drawable/**
+
+# for dsrp
+-keep class com.mastercard.mpsdk.componentinterface.DsrpOutputData{*;}
+
+# for DeviceInfo json
+-keep class com.mastercard.mpsdksample.mpausingwul.DeviceInfo{*;}
+
+# for Remote Management
+-keep class com.mastercard.mpsdk.remotemanagement.api.json.**{*;}
+-keep class com.mastercard.mpsdk.componentinterface.SingleUseKeyStatus{*;}
+
+# for SDK card profiles
+-keep class com.mastercard.mpsdk.card.profile.**{*;}
+
+# for Database Upgrade
+-keep class com.mastercard.upgrade.profile.**{*;}
+
+# for SDK business logic
+-keep class com.mastercard.mpsdk.implementation.TransactionLogJson{*;}
+-keep class com.mastercard.mpsdk.implementation.SingleUseKeyJson{*;}
+
+# for ces-plugin
+-keep class com.mastercard.mpsdkwulcesplugin.**{*;}
+
+# for FCM
+-keep,allowshrinking class com.google.firebase.** { *; }
+-keepresourcexmlelements manifest/application/**

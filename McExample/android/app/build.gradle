@@ -1,5 +1,6 @@
 apply plugin: "com.android.application"
 apply plugin: 'kotlin-android'
+apply plugin: 'jacoco' // Apply the jacoco plugin to generate test coverage reports.
 
 import com.android.build.OutputFile
 
@@ -131,11 +132,41 @@ android {
 
     defaultConfig {
         applicationId "com.mcexample"
-        minSdkVersion rootProject.ext.minSdkVersion
+        minSdkVersion 19//rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
     }
+
+
+    flavorDimensions "wul"
+
+    productFlavors {
+/*
+        walletPin {
+            dimension "wul"
+            versionNameSuffix ' WalletPin'
+        }
+*/
+        cardPin {
+            dimension "wul"
+            versionNameSuffix ' CardPin'
+        }
+/*
+        fingerprint {
+            dimension "wul"
+            versionNameSuffix ' Fingerprint'
+        }
+        noCdCvm {
+            dimension "wul"
+            versionNameSuffix ' NoCdCvm'
+        }
+*/
+    }
+
+
+
     splits {
         abi {
             reset()
@@ -146,16 +177,19 @@ android {
     }
     signingConfigs {
         debug {
+/*
             storeFile file('debug.keystore')
             storePassword 'android'
             keyAlias 'androiddebugkey'
             keyPassword 'android'
+*/
         }
     }
     buildTypes {
         debug {
             signingConfig signingConfigs.debug
         }
+/*
         release {
             // Caution! In production, you need to generate your own keystore file.
             // see https://reactnative.dev/docs/signed-apk-android.
@@ -163,6 +197,7 @@ android {
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
+*/
     }
 
     // applicationVariants are e.g. debug, release
@@ -181,12 +216,42 @@ android {
     }
 }
 
+def supportVersion = '26.1.0'
+
 dependencies {
+    implementation 'androidx.multidex:multidex:2.0.1'
     implementation fileTree(dir: "libs", include: ["*.jar"])
     //noinspection GradleDynamicVersion
     implementation "com.facebook.react:react-native:+"  // From node_modules
 
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
+
+
+    def cryptoVersion = '3.2.3'
+    def sdkVersion = '3.2.3'
+    def wulVersion = '3.2.3'
+
+
+    debugImplementation (name: "mpsdk-walletusabilitylayer-${wulVersion}-debug", ext: "aar")
+    releaseImplementation (name: "mpsdk-walletusabilitylayer-${wulVersion}-release", ext: "aar")
+
+    debugImplementation (name: "mpsdk-${sdkVersion}-debug", ext: "aar")
+    releaseImplementation (name: "mpsdk-${sdkVersion}-release", ext: "aar")
+
+    debugImplementation (name: "ces-pas-communication-plugin-${wulVersion}-debug", ext: "aar")
+    releaseImplementation (name: "ces-pas-communication-plugin-${wulVersion}-release", ext: "aar")
+
+    debugImplementation (name: "sample-android-crypto-${cryptoVersion}-debug", ext: "aar")
+    releaseImplementation (name: "sample-android-crypto-${cryptoVersion}-release", ext: "aar")
+
+
+
+
+
+    implementation "com.dicedmelon.gradle:jacoco-android:0.1.4"
+    implementation "org.jacoco:org.jacoco.core:0.8.3"
+    implementation project(":wul")
+
 
     debugImplementation("com.facebook.flipper:flipper:${FLIPPER_VERSION}") {
       exclude group:'com.facebook.fbjni'

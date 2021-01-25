@@ -8,8 +8,17 @@ import com.facebook.react.ReactInstanceManager;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.soloader.SoLoader;
+import com.mastercard.mchipengine.walletinterface.walletcommonenumeration.CvmModel;
+import com.mastercard.mpsdk.walletusabilitylayer.api.Wul;
+import com.mastercard.mpsdk.walletusabilitylayer.config.TransactionPolicy;
+import com.mastercard.mpsdk.walletusabilitylayer.config.UserAuthMode;
+import com.mastercard.mpsdk.walletusabilitylayer.config.WalletConfiguration;
+import com.mastercard.mpsdksample.androidcryptoengine.McbpCryptoEngineFactory;
+import com.mastercard.mpsdksample.mpausingwul.receiver.InputValidationServiceImpl;
+
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
+
 
 public class MainApplication extends Application implements ReactApplication {
 
@@ -33,7 +42,49 @@ public class MainApplication extends Application implements ReactApplication {
         }
       };
 
-  @Override
+
+
+    public void initMpSdk() {
+
+        // create policies
+
+        TransactionPolicy lvtPolicy = new TransactionPolicy(TransactionPolicy.Type.LVT)
+                .allowTransactions(true)
+                .numberOfTransactionsAllowedBeforeUnlock(0)
+                .numberOfTransactionsAllowedBeforeAuth(0)
+                .secondsAllowedSinceLastAuth(0);
+
+        TransactionPolicy hvtPolicy = new TransactionPolicy(TransactionPolicy.Type.HVT)
+                .allowTransactions(true)
+                .numberOfTransactionsAllowedBeforeUnlock(0)
+                .numberOfTransactionsAllowedBeforeAuth(0)
+                .secondsAllowedSinceLastAuth(0);
+
+        TransactionPolicy transitPolicy = new TransactionPolicy(TransactionPolicy.Type.TRANSIT)
+                .allowTransactions(false);
+
+        TransactionPolicy unknownPolicy = new TransactionPolicy(TransactionPolicy.Type.UNKNOWN)
+                .copyOf(hvtPolicy);
+
+        // create configuration
+
+        WalletConfiguration.Builder builder = new WalletConfiguration.Builder(this)
+
+                .withCryptoEngine(
+                        new McbpCryptoEngineFactory().
+                                getCryptoEngine(this, new InputValidationServiceImpl(this)))
+                .withUserAuthMode(UserAuthMode.CARD_PIN)
+                .withCvmModel(CvmModel.CDCVM_ALWAYS)
+                .withPolicy(lvtPolicy)
+                .withPolicy(hvtPolicy)
+                .withPolicy(transitPolicy)
+                .withPolicy(unknownPolicy);
+
+        WalletConfiguration conf = builder.build();
+        Wul.init(this, conf);
+    }
+
+    @Override
   public ReactNativeHost getReactNativeHost() {
     return mReactNativeHost;
   }
@@ -43,6 +94,7 @@ public class MainApplication extends Application implements ReactApplication {
     super.onCreate();
     SoLoader.init(this, /* native exopackage */ false);
     initializeFlipper(this, getReactNativeHost().getReactInstanceManager());
+    initMpSdk();
   }
 
   /**

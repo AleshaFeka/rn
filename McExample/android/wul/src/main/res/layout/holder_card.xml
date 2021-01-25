@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical"
+              android:paddingLeft="16dp"
+              android:paddingRight="16dp"
+              android:paddingTop="16dp"
+              android:transitionName="card"
+    >
+
+    <com.mastercard.mpsdksample.mpausingwul.view.WalletCardView
+        android:id="@+id/cardholder_walletcardview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+
+    <TextView
+        android:id="@+id/cardholder_cardstate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:paddingBottom="12dp"
+        android:paddingRight="16dp"
+        android:text=""
+        android:textColor="@color/bluegrey_400"
+        android:textSize="16sp"
+        android:visibility="gone"
+        />
+</LinearLayout>
