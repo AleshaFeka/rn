@@ -20,8 +20,8 @@ class CalendarModule(private val context: ReactApplicationContext?) : ReactConte
 
 
         // launch activation
-        val i = Intent(context, SplashActivity::class.java)
-        context?.startActivity(i)
+        val i = Intent(currentActivity, SplashActivity::class.java)
+        currentActivity?.startActivity(i)
     }
 
 }

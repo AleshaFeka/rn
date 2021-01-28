@@ -227,6 +227,8 @@ dependencies {
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
 
 
+
+    implementation platform('com.google.firebase:firebase-bom:26.3.0')
     def cryptoVersion = '3.2.3'
     def sdkVersion = '3.2.3'
     def wulVersion = '3.2.3'
@@ -244,7 +246,7 @@ dependencies {
     debugImplementation (name: "sample-android-crypto-${cryptoVersion}-debug", ext: "aar")
     releaseImplementation (name: "sample-android-crypto-${cryptoVersion}-release", ext: "aar")
 
-
+    implementation 'commons-codec:commons-codec:1.10'
 
 
 
@@ -283,3 +285,4 @@ task copyDownloadableDepsToLibs(type: Copy) {
 }
 
 apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)
+apply plugin: 'com.google.gms.google-services'

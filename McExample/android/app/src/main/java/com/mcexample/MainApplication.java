@@ -14,13 +14,16 @@ import com.mastercard.mpsdk.walletusabilitylayer.config.TransactionPolicy;
 import com.mastercard.mpsdk.walletusabilitylayer.config.UserAuthMode;
 import com.mastercard.mpsdk.walletusabilitylayer.config.WalletConfiguration;
 import com.mastercard.mpsdksample.androidcryptoengine.McbpCryptoEngineFactory;
+import com.mastercard.mpsdksample.mpausingwul.MpaApplication;
 import com.mastercard.mpsdksample.mpausingwul.receiver.InputValidationServiceImpl;
+
+import com.mastercard.mpsdksample.mpausingwul.BaseWulApplication;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
 
-public class MainApplication extends Application implements ReactApplication {
+public class MainApplication extends MpaApplication implements ReactApplication {
 
   private final ReactNativeHost mReactNativeHost =
       new ReactNativeHost(this) {
@@ -94,7 +97,7 @@ public class MainApplication extends Application implements ReactApplication {
     super.onCreate();
     SoLoader.init(this, /* native exopackage */ false);
     initializeFlipper(this, getReactNativeHost().getReactInstanceManager());
-    initMpSdk();
+//    initMpSdk();
   }
 
   /**
