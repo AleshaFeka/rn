@@ -28,8 +28,6 @@ task copyApk(type: Sync) {
 }
 
 apply plugin: 'com.android.library'
-//apply plugin: 'com.android.application'
-//apply plugin: 'dexguard'
 apply plugin: 'jacoco' // Apply the jacoco plugin to generate test coverage reports.
 
 def cryptoVersion = '3.2.3'
@@ -116,8 +114,8 @@ android {
 */
     }
 
-    def deployName = 'Sample_MPA_WUL_' + wulVersion
 /*
+    def deployName = 'Sample_MPA_WUL_' + wulVersion
     android.libraryVariants.all { variant ->
         variant.outputs.all { output ->
             outputFileName = deployName + '-' + variant.name + '.apk'
@@ -128,8 +126,6 @@ android {
 }
 
 assemble.finalizedBy(copyApk)
-
-def supportVersion = '26.1.0'
 
 dependencies {
     androidTestImplementation('androidx.test.espresso:espresso-core:3.1.0', {
@@ -169,8 +165,6 @@ dependencies {
     debugImplementation (name: "sample-android-crypto-${cryptoVersion}-debug", ext: "aar")
     releaseImplementation (name: "sample-android-crypto-${cryptoVersion}-release", ext: "aar")
 }
-
-//apply plugin: 'com.google.gms.google-services'
 
 
 
